@@ -57,6 +57,12 @@ uis.directive('uiSelectSingle', ['$timeout','$compile', function($timeout, $comp
 
       ngModel.$render = function() {
         $select.selected = ngModel.$viewValue;
+
+         // run following lines to set model with initial values
+        if (angular.isDefined($select.selected)) {
+          ngModel.$setViewValue(undefined);
+          ngModel.$setViewValue($select.selected);
+        }
       };
 
       scope.$on('uis:select', function (event, item) {

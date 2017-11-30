@@ -165,6 +165,11 @@ uis.directive('uiSelectMultiple', ['uiSelectMinErr','$timeout', function(uiSelec
         $select.selected = ngModel.$viewValue;
         $selectMultiple.refreshComponent();
         scope.$evalAsync(); //To force $digest
+
+        // run following lines to set model with initial values
+        if (ngModel.$viewValue.length) {
+          ngModel.$setViewValue(Date.now());
+        }
       };
 
       scope.$on('uis:select', function (event, item) {
